@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.StorePage"
+             Title="Stores"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <StackLayout Margin="5,0,5,0">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{i18n:Translate SelectedStore}" VerticalOptions="Center" HorizontalOptions="Start"/>
+            
+            <Label Text="{Binding CurrentStoreText}"
+                 FontSize="Large"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"
+                 IsVisible="true">
+            </Label>
+        </StackLayout>
+        <Frame>
+        <StackLayout Padding="10,10">
+            <Label Text="{i18n:Translate AvailableStores}"/>
+            <ListView ItemsSource="{Binding StoreList}" SelectedItem="{Binding CurrentStore}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Location}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+        </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

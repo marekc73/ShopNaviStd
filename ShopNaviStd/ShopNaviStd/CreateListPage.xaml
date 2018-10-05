@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.CreateListPage"
+             Title="{i18n:Translate CreateList}"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BindablePicker x:Key="bindablePicker"></local:BindablePicker>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{i18n:Translate StartListening}" Command="{Binding Menu.RecordCmd}" Order="Secondary"/>
+        <ToolbarItem Text="{i18n:Translate New}" Command="{Binding Menu.NewListCmd}" Order="Secondary" />
+        <ToolbarItem Text="{i18n:Translate MoveToInput}" Command="{Binding Menu.MoveToInputCmd}" Order="Secondary"/>
+        <ToolbarItem Text="{i18n:Translate Publish}" Command="{Binding Menu.PublishCmd}" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Orientation="Vertical" Margin="5,0,5,0">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{i18n:Translate RemoveDuplicities}" HorizontalOptions="Start"/>
+            <Switch IsToggled="{Binding RemoveDuplicities}" HorizontalOptions="Start"/>
+        </StackLayout>
+        <Label Text="{Binding ErrorMsg}"/>
+        <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="newItem" Text="{Binding NewItem}" HorizontalOptions="FillAndExpand" />
+            <Button Text="{i18n:Translate AddToList}" Command="{Binding AddItemCmd}" HorizontalOptions="End"/>
+        </StackLayout>
+        <BoxView HeightRequest="1" Color="Gray"></BoxView>
+        <ListView ItemsSource="{Binding Lines}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeleteCmd}" CommandParameter="{Binding Me}"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="{Binding Text}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

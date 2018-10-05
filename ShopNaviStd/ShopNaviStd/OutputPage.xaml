@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:OutputContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.OutputPage"
+             x:Name="Output"
+             Title="{i18n:Translate OutputList}"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <local:OutputContentPage.Resources>
+        <ResourceDictionary>
+            <local:VisibleToHeightConverter x:Key="visibleToHeightConverter"></local:VisibleToHeightConverter>
+            <local:ValidToColorConverter x:Key="validToColorConverter"></local:ValidToColorConverter>
+            <local:OutputFilterConverter x:Key="outputFilterConverter"></local:OutputFilterConverter>            
+        </ResourceDictionary>
+    </local:OutputContentPage.Resources>
+    <StackLayout Margin="5,0,5,0">
+        <StackLayout Orientation="Horizontal">
+            <Button Text="{i18n:Translate DeleteFinished}" Command="{Binding DelFinishedCmd}"/>
+            <Label Text="{i18n:Translate ShowFinished}" VerticalTextAlignment="Center"/>
+            <Switch IsToggled="{Binding ShowDeleted}"/>
+        </StackLayout>
+    <ListView x:Name="outputList" ItemsSource="{Binding VisibleOutputList}" HasUnevenRows="True" SeparatorVisibility="Default">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Clicked="OnDelete" CommandParameter="{Binding Me}" Text="{i18n:Translate Delete}" IsDestructive="True" />
+                        <MenuItem Clicked="OnMoveStart" CommandParameter="{Binding Me}" Text="{Binding MoveLabel}"/>
+                    </ViewCell.ContextActions>
+                    <Grid>
+                        <local:PanContainer OnDeleteFinished="OnDeleteFinished" Line="{Binding Me}" AllowedOperation="Delete" Padding="0,0,0,0">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <local:PanLabel AllowedOperation="Delete" IsVisible="{Binding IsVisible}" Text="{Binding Name}" TextColor="{Binding Valid, Converter = {StaticResource validToColorConverter}}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" FontSize="Large">
+                                </local:PanLabel>
+                                <StackLayout Orientation="Horizontal">
+                                    <local:PanLabel AllowedOperation="Delete" IsVisible="{Binding IsVisible}" Text="{Binding Section}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="Medium" >
+                                    </local:PanLabel>
+                                    <local:PanLabel AllowedOperation="Delete" Text="{Binding Location}" IsVisible="{Binding LocationVisible}" FontAttributes="Italic" FontSize="Medium"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </local:PanContainer>                            
+                    </Grid>
+                </ViewCell>
+                
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+</local:OutputContentPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopNavi.NewStorePage"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="{i18n:Translate OK}" Command="{Binding OkCmd}" CommandParameter="{Binding SelectedSection}"/>
+            <Button Text="{i18n:Translate Cancel}" Command="{Binding CancelCmd}" CommandParameter="SectionList"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="{i18n:Translate Name}"/>
+            <Editor Text="{Binding Name}"/>
+            <Label Text="Location"/>
+            <Editor Text="{Binding Location}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopNavi.LocationPage"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <StackLayout Margin="5,0,5,0">
+        <Label Text="Please select a value" VerticalOptions="Center" HorizontalOptions="Center" />
+        <StackLayout Orientation="Horizontal">
+            <Button Text="OK" Command="{Binding OkCmd}" CommandParameter="ItemList"/>
+            <Button Text="Cancel" Command="{Binding CancelCmd}" CommandParameter="ItemList"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text = " Item: "/>
+            <Label Text="{Binding LocationLabel}" FontAttributes="Bold"/>
+            <Label Text="{Binding LocationText}" FontAttributes="Italic"/>
+        </StackLayout>            
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Location" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+            <Editor Text="{Binding LocationValue}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Near item:" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+            <Label Text="{Binding NearItemName}"></Label>
+        </StackLayout>
+        <Label Text="Item list"/>
+        <ListView x:Name="itemList" ItemsSource="{Binding ItemList}" SelectedItem="{Binding SelectedItem}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View >
+                            <StackLayout Orientation="Horizontal" >
+                                <Image Source="{Binding ImageName}">
+                                </Image>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" />
+                                    <Label Text="{Binding LocationText}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End" VerticalTextAlignment="End" FontSize="8"/>
+                                </StackLayout>
+                                <Image Source="on.png" HorizontalOptions="End" >
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LinkNearItemCmd}" CommandParameter="{Binding Me}" NumberOfTapsRequired="1" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

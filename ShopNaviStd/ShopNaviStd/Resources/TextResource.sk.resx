@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptDataFromThisPerson" xml:space="preserve">
+    <value>Preberaj údaje od tejto osoby</value>
+  </data>
+  <data name="AddToList" xml:space="preserve">
+    <value>Pridaj</value>
+  </data>
+  <data name="AvailableStores" xml:space="preserve">
+    <value>Obchody:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Zruš</value>
+  </data>
+  <data name="Clean" xml:space="preserve">
+    <value>Zmaž</value>
+  </data>
+  <data name="CloudSMS" xml:space="preserve">
+    <value>Cloud/SMS</value>
+  </data>
+  <data name="CreateList" xml:space="preserve">
+    <value>Vytvor zoznam</value>
+  </data>
+  <data name="DeleteFinished" xml:space="preserve">
+    <value>Zmaž hotové</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Zmeň</value>
+  </data>
+  <data name="InputList" xml:space="preserve">
+    <value>Vstupné údaje</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Kľúč</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="Load" xml:space="preserve">
+    <value>Načítaj...</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Chyby</value>
+  </data>
+  <data name="MoveToInput" xml:space="preserve">
+    <value>Presuň do zoznamu</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Meno</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nový</value>
+  </data>
+  <data name="NewStore" xml:space="preserve">
+    <value>Nový obchod</value>
+  </data>
+  <data name="NoError" xml:space="preserve">
+    <value>Bez chyby</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Číslo</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OutputList" xml:space="preserve">
+    <value>Utriedené výsledky</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Vlož</value>
+  </data>
+  <data name="PleaseSelectValue" xml:space="preserve">
+    <value>Zvoľte hodnotu</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Pošli</value>
+  </data>
+  <data name="SaveData" xml:space="preserve">
+    <value>Ulož údaje</value>
+  </data>
+  <data name="SelectedStore" xml:space="preserve">
+    <value>Zvolený obchod</value>
+  </data>
+  <data name="SelectStore" xml:space="preserve">
+    <value>Zvoľ obchod:</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="ShowFinished" xml:space="preserve">
+    <value>Ukáž hotové</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Utrieď</value>
+  </data>
+  <data name="SpeechDelimiter" xml:space="preserve">
+    <value>Oddeľovač v reči/slovo</value>
+  </data>
+  <data name="StartListening" xml:space="preserve">
+    <value>Počúvaj...</value>
+  </data>
+  <data name="StopListening" xml:space="preserve">
+    <value>Prestaň počúvať</value>
+  </data>
+  <data name="CreateListMenuItem" xml:space="preserve">
+    <value>Lokálne menu pre vytváranie zoznamov (prosím podržte)</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Zmaž</value>
+  </data>
+  <data name="EmptyCell" xml:space="preserve">
+    <value>Textový vstup je prázdny</value>
+  </data>
+  <data name="EmptyList" xml:space="preserve">
+    <value>Zoznam je prázdny</value>
+  </data>
+  <data name="RemoveDuplicities" xml:space="preserve">
+    <value>Zmaž duplicity</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Bežím...</value>
+  </data>
+  <data name="CreateListMenuItemDescr" xml:space="preserve">
+    <value>Lokálne menu pre vytváranie zoznamov (prosím podržte)</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Skončené</value>
+  </data>
+  <data name="FinishMovingLine" xml:space="preserve">
+    <value>Dokonči presun riadku</value>
+  </data>
+  <data name="Listening" xml:space="preserve">
+    <value>Počúvam...</value>
+  </data>
+  <data name="StartMovingLine" xml:space="preserve">
+    <value>Označ riadok na presun</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Další</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Predošlý</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Prihlásenie</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="GetListFromGmail" xml:space="preserve">
+    <value>Get list from gmail</value>
+  </data>
+  <data name="Gmail" xml:space="preserve">
+    <value>Gmail</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subjekt</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Dni</value>
+  </data>
+  <data name="GmailClientId" xml:space="preserve">
+    <value>Gmail identifikacia</value>
+  </data>
+  <data name="GmailFrom" xml:space="preserve">
+    <value>Od koho</value>
+  </data>
+  <data name="GmailSubject" xml:space="preserve">
+    <value>Subjekt</value>
+  </data>
+  <data name="AutoOk" xml:space="preserve">
+    <value>Automatické potvrdenie</value>
+  </data>
+  <data name="DeletingLine" xml:space="preserve">
+    <value>Mažem riadok</value>
+  </data>
+  <data name="SwipeDelete" xml:space="preserve">
+    <value>Urobte široký šuch ak chcete zmazať riadok</value>
+  </data>
+</root>

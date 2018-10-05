@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopNavi.ShopListPage"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LinkStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="TextColor" Value="#0000FF"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Label Text="{i18n:Translate PleaseSelectValue}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <StackLayout Orientation="Horizontal">
+            <Button Text="{i18n:Translate OK}" Command="{Binding OkCmd}" CommandParameter="ItemList"/>
+            <Button Text="{i18n:Translate Cancel}" Command="{Binding CancelCmd}" CommandParameter="ItemList"/>
+        </StackLayout>
+        <ListView x:Name="storeList" ItemsSource="{Binding StoreList}" SelectedItem="{Binding PendingStore}" HorizontalOptions="StartAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View >
+                            <StackLayout Orientation="Horizontal"  >
+                                <Image Source="{Binding ImageName}">
+                                </Image>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" />
+                                    <Label Text="{Binding Location}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End" VerticalTextAlignment="End" FontSize="8"/>
+                                </StackLayout>
+                                <Button Style="{StaticResource LinkStyle}" Image="settings.png" HorizontalOptions="End" Command="{Binding StoreEditCmd}" CommandParameter="{Binding Me}">
+                                </Button>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:OutputContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.CarouselOutput"
+             x:Name="Carousel"
+             xmlns:controls="clr-namespace:SwipeCards.Controls;assembly=SwipeCards.Controls"
+             Title="{i18n:Translate CarouselList}"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <local:OutputContentPage.Resources>
+        <ResourceDictionary>
+            <local:VisibleToHeightConverter x:Key="visibleToHeightConverter"></local:VisibleToHeightConverter>
+            <local:ValidToColorConverter x:Key="validToColorConverter"></local:ValidToColorConverter>
+            <local:OutputFilterConverter x:Key="outputFilterConverter"></local:OutputFilterConverter>
+        </ResourceDictionary>
+    </local:OutputContentPage.Resources>
+    <StackLayout Margin="5,0,5,0">
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{i18n:Translate ShowFinished}" VerticalTextAlignment="Center"/>
+            <Switch IsToggled="{Binding ShowDeleted}"/>
+        </StackLayout>
+        <controls:CardStackView x:Name="outputCarousel"  
+                                          ItemsSource="{Binding VisibleOutputList}"  
+                                          VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:CardStackView.ItemTemplate >
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" >
+                        <StackLayout>
+                            <Label Text="{i18n:Translate Previous}" FontSize="Micro"></Label>
+                            <Label Text="{Binding PreviousName}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" FontSize="Small">
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding PreviousSection}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro" >
+                                </Label>
+                                <Label Text="{Binding PreviousLocation}" FontAttributes="Italic" FontSize="Micro"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="Black"  HeightRequest="1"/>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" TextColor="{Binding Valid, Converter = {StaticResource validToColorConverter}}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" FontSize="Large">
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label IsVisible="{Binding IsVisible}" Text="{Binding Section}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="Medium" >
+                                </Label>
+                                <Label Text="{Binding Location}" IsVisible="{Binding LocationVisible}" FontAttributes="Italic" FontSize="Medium"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView BackgroundColor="Black"  HeightRequest="1"/>
+
+
+                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="End">
+                            <Label Text="{i18n:Translate Next}" FontSize="Micro" ></Label>
+                            <Label Text="{Binding NextName}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" FontSize="Small">
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding NextSection}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro" >
+                                </Label>
+                                <Label Text="{Binding NextLocation}" FontAttributes="Italic" FontSize="Micro"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Button Command="{Binding DeleteCmd}" Text="{i18n:Translate Delete}" HorizontalOptions="End"></Button>
+                    </StackLayout>
+                </DataTemplate>
+            </controls:CardStackView.ItemTemplate>
+        </controls:CardStackView>
+    </StackLayout>
+</local:OutputContentPage>

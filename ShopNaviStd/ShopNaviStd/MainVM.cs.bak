@@ -1,0 +1,256 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using ShopNavi.Data;
+using Xamarin.Forms;
+
+namespace ShopNavi
+{
+    public class PageItem : NotifyPropertyChanged
+    {
+        private string title;
+        private System.Type type;
+        private string icon;
+        private BaseVM vm;
+        public string Title
+        {
+            get
+            {
+                return this.title;
+            }
+            set
+            {
+                this.title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        public string Icon
+        {
+            get
+            {
+                return this.icon;
+            }
+            set
+            {
+                this.icon = value;
+                OnPropertyChanged("Icon");
+            }
+        }
+        public Type Type
+        {
+            get
+            {
+                return this.type;
+            }
+            set
+            {
+                this.type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+        public BaseVM VM
+        {
+            get
+            {
+                return this.vm;
+            }
+            set
+            {
+                this.vm = value;
+                OnPropertyChanged("VM");
+            }
+        }
+
+        public ContentPage Page
+        {
+            get;
+            set;
+        }
+    }
+
+    public class MainVM : BaseVM
+    {
+
+        public MainVM()
+        {
+            var vm = new CommonVM();
+            SettingsBaseVM settingVm = new SettingsVM(StoreFactory.HalProxy.ReadSettings());
+            vm.Order = new OutputLineVisitor(vm);
+            StoreFactory.CurrentVM = vm;
+
+            this.Pages.Add(new PageItem() { 
+                Title = "Create list", 
+                Icon = "edit.png", 
+                Type = typeof(CreateListPage), 
+                VM = new CreateListVM()                
+            });
+            
+
+            this.Pages.Add(new PageItem() { 
+                Title = "Input list", 
+                Icon = "in.png", 
+                Type = typeof(InputPage), 
+                VM = vm
+                });
+
+            this.Pages.Add(new PageItem() { 
+                Title = "Output list", 
+                Icon = "out.png", 
+                Type = typeof(Output), 
+                VM = vm 
+                });
+            
+            this.Pages.Add(new PageItem() { 
+                Title = "Settings", 
+                Icon = "settings.png", 
+                Type = typeof(SettingsPage),
+                VM = settingVm
+                });
+
+            this.Pages.Add(new PageItem() { 
+                Title = "Logs", 
+                Icon = "logs.png", 
+                Type = typeof(LogsPage), 
+                VM = vm
+                });
+
+            foreach(var page in this.Pages)
+            {
+                page.Page = Activator.CreateInstance(page.Type, new object[] { page.VM }) as ContentPage;
+                this.pagesMap.Add(page.Type, page.Page);
+            }
+
+            OnPropertyChanged("Pages");
+
+            this.GoToPageCmd = new Command(() =>
+            {
+                string typeName = "InputPage";
+                switch (typeName.ToString())
+                {
+                    case "CreateListPage":
+                        this.Navi.PushAsync(this.Pages[0].Page, true);
+                        break;
+                    case "InputPage":
+                        this.Navi.PushAsync(this.Pages[1].Page, true);
+                        break;
+                    case "Output":
+                        this.Navi.PushAsync(this.Pages[2].Page, true);
+                        break;
+                    case "SettingsPage":
+                        this.Navi.PushAsync(this.Pages[3].Page, true);
+                        break;
+                    case "LogsPage":
+                        this.Navi.PushAsync(this.Pages[4].Page, true);
+                        break;
+                }
+            });
+
+            StoreFactory.MainVM = this;
+        }
+
+
+        public ICommand GoToPageCmd { get; set; }
+
+        public PageItem CurrentPageItem
+        {
+            get
+            {
+                return this.currentPageItem;
+            }
+            set
+            {
+                var oldPage = this.currentPageItem;
+                this.currentPageItem = value;
+                try
+                {
+                    this.Page.Detail = new NavigationPage(this.CurrentPage);
+                    this.Page.IsPresented = false;
+                    OnPropertyChanged("CurrentPageItem");
+                    OnPropertyChanged("CurrentPage");
+                }
+                catch(Exception ex)
+                {
+                    StoreFactory.CurrentVM.Logs.Add(ex.Message);
+                }
+            }
+        }
+
+        public ContentPage CurrentPage
+        {
+            get
+            {
+                if (this.pagesMap.ContainsKey(this.currentPageItem.Type))
+                {
+                    return this.pagesMap[this.currentPageItem.Type];
+                }
+                else
+                {
+                    var page = Activator.CreateInstance(this.currentPageItem.Type, new object[] { this.currentPageItem.VM }) as ContentPage;
+                    this.pagesMap[this.currentPageItem.Type] = page;
+                    return page;
+                }
+            }
+        }
+
+
+        //public ContentPage CurrentPage
+        //{
+        //    get
+        //    {
+        //        PageItem page = null;
+        //        if (this.currentPageItem != null)
+        //        {
+        //             page = this.Pages
+        //                .FirstOrDefault(x => this.currentPageItem != null && x.Type == this.currentPageItem.Type);
+        //        }
+        //        else
+        //        {
+        //            page = this.Pages[StoreFactory.HalProxy.InitialPageIndex];
+        //        }
+
+        //        if(page.Page == null)
+        //        {
+        //            page.Page = Activator.CreateInstance(page.Type, new object[] { page.VM }) as ContentPage;
+        //        }
+
+        //        return page.Page;
+        //    }
+        //}
+
+        public ObservableCollection<PageItem> Pages
+        {
+            get
+            {
+                return this.pages;
+            }
+        }
+
+        private ObservableCollection<PageItem> pages = new ObservableCollection<PageItem>();
+        private PageItem currentPageItem = null;
+        private Dictionary<Type, ContentPage> pagesMap = new Dictionary<Type, ContentPage>();
+        private Main page;
+
+        public Main Page 
+        { 
+            get
+            {
+                return this.page;
+            }
+            set
+            {
+                this.page = value;
+                //this.page.Detail = this.Pages[StoreFactory.HalProxy.InitialPageIndex].Page;
+            }
+        }
+
+        public override void Save()
+        {
+            
+        }
+    }
+}

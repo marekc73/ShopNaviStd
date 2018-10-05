@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:InputContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.InputPage"
+             x:Name="Input"
+             Title="{i18n:Translate InputList}"
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+    <local:InputContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LinkStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="TextColor" Value="#0000FF"/>                
+            </Style>
+            
+            <local:SectionToVisibleConverter x:Key="sectionToVisibleConverter"></local:SectionToVisibleConverter>
+            <local:SectionToIndexConverter x:Key="sectionToIndexConverter"></local:SectionToIndexConverter>
+            <local:StoreToIndexConverter x:Key="storeToIndexConverter"></local:StoreToIndexConverter>
+            <local:EditModeVisibleConverter x:Key="editModeVisibleConverter"></local:EditModeVisibleConverter>
+            <local:BindablePicker x:Key="bindablePicker"></local:BindablePicker>
+        </ResourceDictionary>
+    </local:InputContentPage.Resources>
+    <StackLayout Margin="5,0,5,0">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{i18n:Translate SelectStore}" VerticalTextAlignment="Center"/>
+            <Button Text="{Binding CurrentStoreText}" Style="{StaticResource LinkStyle}" Command="{Binding GoToStoreListCmd}" />
+        </StackLayout>
+        <Button Text="{i18n:Translate Sort}" Command="{Binding SortCmd}" HorizontalOptions="FillAndExpand"/>
+        <Image Source="{Binding InputExtraIcon}" HorizontalOptions="Center" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding InputExtraCmd}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout IsVisible="{Binding InputExtraOn}">
+
+            <StackLayout Orientation="Horizontal" Padding="0,5" HorizontalOptions="EndAndExpand">
+                <Button Text="{i18n:Translate Load}" Command="{Binding LoadCmd}" IsVisible="false"/>
+                <Button Text="{i18n:Translate Paste}" Command="{Binding PasteCmd}"/>
+                <Button Text="{i18n:Translate Delete}" Command="{Binding DeleteListCmd}"/>
+            </StackLayout>
+        
+            <StackLayout Orientation="Horizontal" Padding="0,5" HorizontalOptions="EndAndExpand">
+                <Label Text="{i18n:Translate Edit}" VerticalTextAlignment="Center"/>
+                <Switch IsToggled="{Binding ItemEditMode}"/>
+                <Label Text="{i18n:Translate Clean}" VerticalTextAlignment="Center"/>
+                <Switch IsToggled="{Binding CleanList}"/>
+            </StackLayout>
+        </StackLayout>
+        <ListView  x:Name="inputList" ItemsSource="{Binding InputList}" HasUnevenRows="True" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnMoveStart" CommandParameter="{Binding Me}" Text="{Binding MoveLabel}"/>
+                            <MenuItem Command="{Binding DeleteCmd}" CommandParameter="{Binding Me}" Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <Grid>
+                            <local:PanContainer AllowedOperation="Delete" OnDeleteFinished="OnDeleteFinished" Line="{Binding Me}" Padding="0,0,0,0">
+                                <StackLayout  Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" >
+                                        <local:PanLabel AllowedOperation="Delete" Text="{Binding Name}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="Large"/>
+                                        <local:PanLabel AllowedOperation="Delete" Text="{Binding LocationText}" FontAttributes="Italic" FontSize="Medium" />
+                                    </StackLayout>
+                                    <Button  Image="{Binding Icon}" FontSize="Small" IsVisible="{Binding IsEditable}" Style="{StaticResource LinkStyle}" Command="{Binding LinkOpCmd}" HorizontalOptions="End"/>
+                                    <Button   Image="{Binding LocationIcon}" FontSize="Small" Style="{StaticResource LinkStyle}"  Command="{Binding LocationOpCmd}" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </local:PanContainer>
+                        </Grid>                            
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+</local:InputContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShopNavi;assembly=ShopNavi"
+             x:Class="ShopNavi.MainPage" x:Name="Main" Title ="Shop Navi" Icon="icon.png" 
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Shopping optimizer" Icon="menu.png">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ListView SelectedItem="{Binding CurrentPageItem}" ItemsSource="{Binding Pages}" HorizontalOptions="StartAndExpand"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View >
+                                <StackLayout Orientation="Horizontal" >
+                                    <Image Source="{Binding Icon}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding Title}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Center" VerticalOptions="Center" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>    
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail >
+        <NavigationPage>
+            <x:Arguments>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>    
+</MasterDetailPage>

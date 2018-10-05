@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopNavi.LoginPage"             
+             xmlns:i18n="clr-namespace:UsingResxLocalization;assembly=ShopNavi"
+             Title="{i18n:Translate Gmail}">
+    <StackLayout Orientation="Vertical">
+        <Image Source="{Binding GmailSettingsIcon}" HorizontalOptions="Center" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GmailSettingsCmd}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Grid IsVisible="{Binding GmailSettingsOn}" Margin="10,5,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding RowSize}"></RowDefinition>
+                <RowDefinition Height="{Binding RowSize}"></RowDefinition>
+                <RowDefinition Height="{Binding RowSize}"></RowDefinition>
+            </Grid.RowDefinitions>
+                
+            <Label Grid.Row="0" Grid.Column="0" Text="{i18n:Translate Subject}" HorizontalOptions="Start" VerticalOptions="EndAndExpand" FontSize="Small" />
+            <Editor Grid.Row="0" Grid.Column="1" Text="{Binding Subject}"  FontSize="Micro" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="{i18n:Translate From}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="EndAndExpand"/>
+            <Editor Grid.Row="1" Grid.Column="1" Text="{Binding From}" FontSize="Micro" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="{i18n:Translate Days}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="EndAndExpand"/>
+            <Editor Grid.Row="2" Grid.Column="1" Text="{Binding Days}" Keyboard="Numeric" FontSize="Micro" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+        </Grid>
+        <Button Text="{i18n:Translate GetListFromGmail}" Command="{Binding LoginCmd}"/>
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
+        <ListView ItemsSource="{Binding Messages}"  SelectedItem="{Binding SelectedMessage}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View >
+                            <StackLayout Orientation="Horizontal"  >
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Subject}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalTextAlignment="Start" VerticalOptions="Start" FontSize="Small"/>
+                                    <Label MinimumHeightRequest="100" LineBreakMode="TailTruncation" Text="{Binding Body}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="End" VerticalTextAlignment="End" FontSize="Micro"/>
+                                </StackLayout>
+                                <Button Text="{i18n:Translate OK}"  FontSize="Small" HorizontalOptions="End" Command="{Binding InputFromGmailCmd}">
+                                </Button>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

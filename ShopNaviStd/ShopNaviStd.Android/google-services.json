@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "625447915918",
+    "firebase_url": "https://shopnavi-151716.firebaseio.com",
+    "project_id": "shopnavi-151716",
+    "storage_bucket": "shopnavi-151716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625447915918:android:23680e852dd54a8c",
+        "android_client_info": {
+          "package_name": "com.ShopNavi.Droid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625447915918-3n4e3emttff1da76qmepingn8gb6f92o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo1hEc-x1DdZYrU6ckIgJrg_xdsW2pDmc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
