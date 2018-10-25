@@ -334,7 +334,7 @@ namespace ShopNavi
         {
             get
             {
-                return this.GmailSettingsOn ?  "up2.png" : "down2.png";
+                return StoreFactory.HalProxy.ResourcePrefix + (this.GmailSettingsOn ?  "up2.png" : "down2.png");
             }
         }
 

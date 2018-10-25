@@ -660,5 +660,14 @@ namespace ShopNavi.UWP
         {
             return null;// return new LoginOAuth(vm);
         }
+
+        public string ResourcePrefix
+        {
+            get
+            {
+                return "Assets/";
+            }
+        }
+
     }
 }

@@ -145,7 +145,7 @@ namespace ShopNavi
         {
             get
             {
-                return this.inputExtraOn ? "up2.png" : "down2.png";
+                return StoreFactory.HalProxy.ResourcePrefix + (this.inputExtraOn ? "up2.png" : "down2.png");
             }
         }
 

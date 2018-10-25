@@ -105,9 +105,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\arrow.png" />
+    <EmbeddedResource Include="Assets\arrow.png" />
     <Content Include="Assets\assoc.png" />
-    <Content Include="Assets\carousel.png" />
+    <Content Include="Assets\assoc.scale-100.png" />
+    <EmbeddedResource Include="Assets\carousel.png" />
     <Content Include="Assets\checkmark.png" />
     <Content Include="Assets\dissoc.png" />
     <Content Include="Assets\down.png" />
@@ -134,6 +135,8 @@
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-200.png" />
     <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\assoc.scale-200.png" />
+    <Content Include="Assets\assoc.scale-400.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-400.png" />

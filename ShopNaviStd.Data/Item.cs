@@ -107,11 +107,11 @@ namespace ShopNavi.Data
             {
                 if (this.Link == null || this.Link.Id == 0)
                 {
-                    return "assoc.png";
+                    return StoreFactory.HalProxy.ResourcePrefix + "assoc.png";
                 }
                 else if (this.Parent != null && this.CommonVM.ItemEditMode)
                 {
-                    return "dissoc.png";
+                    return StoreFactory.HalProxy.ResourcePrefix + "dissoc.png";
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace ShopNavi.Data
         {
             get
             {
-                return "location.png";
+                return StoreFactory.HalProxy.ResourcePrefix + "location.png";
             }
         }
 

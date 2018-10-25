@@ -171,7 +171,7 @@ namespace ShopNavi
         {
             get
             {
-                return "menu.png";
+                return StoreFactory.HalProxy.ResourcePrefix + "menu.png";
             }
         }
 

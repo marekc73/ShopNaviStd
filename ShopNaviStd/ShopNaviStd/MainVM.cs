@@ -28,13 +28,13 @@ namespace ShopNavi
 //            foreach(var line in StoreFactory.HalProxy.ReadGmail())
 //                vm.Logs.Add(line);
 
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Gmail, Icon = "mail.png", Type = typeof(LoginPage), VM = listVm, Page = new LoginPage(listVm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.CreateList, Icon = "edit.png", Type = typeof(CreateListPage), VM = listVm, Page = new CreateListPage(listVm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.InputList, Icon = "in.png", Type = typeof(InputPage), VM = vm, Page = new InputPage(vm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.OutputList, Icon = "out.png", Type = typeof(OutputPage), VM = vm, Page = new OutputPage(vm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.CarouselList, Icon = "carousel.png", Type = typeof(CarouselOutput), VM = vm, Page = new CarouselOutput(vm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Settings, Icon = "settings.png", Type = typeof(SettingsPage), VM = settingVm, Page = new SettingsPage(settingVm) });
-            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Logs, Icon = "logs.png", Type = typeof(LogsPage), VM = vm, Page = new LogsPage()});
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Gmail, Icon = StoreFactory.HalProxy.ResourcePrefix + "mail.png", Type = typeof(LoginPage), VM = listVm, Page = new LoginPage(listVm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.CreateList, Icon = StoreFactory.HalProxy.ResourcePrefix + "edit.png", Type = typeof(CreateListPage), VM = listVm, Page = new CreateListPage(listVm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.InputList, Icon = StoreFactory.HalProxy.ResourcePrefix + "in.png", Type = typeof(InputPage), VM = vm, Page = new InputPage(vm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.OutputList, Icon = StoreFactory.HalProxy.ResourcePrefix + "out.png", Type = typeof(OutputPage), VM = vm, Page = new OutputPage(vm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.CarouselList, Icon = StoreFactory.HalProxy.ResourcePrefix + "carousel.png", Type = typeof(CarouselOutput), VM = vm, Page = new CarouselOutput(vm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Settings, Icon = StoreFactory.HalProxy.ResourcePrefix + "settings.png", Type = typeof(SettingsPage), VM = settingVm, Page = new SettingsPage(settingVm) });
+            this.Pages.Add(new PageItem() { Title = Resources.TextResource.Logs, Icon = StoreFactory.HalProxy.ResourcePrefix + "logs.png", Type = typeof(LogsPage), VM = vm, Page = new LogsPage()});
             
             OnPropertyChanged("Pages");
 
@@ -108,7 +108,7 @@ namespace ShopNavi
                     var tmp = this.Pages[4];
                     this.Pages.RemoveAt(4);
                     var vm = tmp.VM;
-                    var pageItem = new PageItem() { Title = Resources.TextResource.CarouselList, Icon = "carousel.png", Type = typeof(CarouselOutput), VM = vm, Page = new CarouselOutput(vm as CommonVM) };    
+                    var pageItem = new PageItem() { Title = Resources.TextResource.CarouselList, Icon = StoreFactory.HalProxy.ResourcePrefix + "carousel.png", Type = typeof(CarouselOutput), VM = vm, Page = new CarouselOutput(vm as CommonVM) };    
                     this.Pages.Insert(4, pageItem);
                     page = pageItem.Page;
 

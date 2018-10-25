@@ -642,6 +642,13 @@ namespace ShopNavi.Droid
             }
         }
 
+        public string ResourcePrefix
+        {
+            get
+            {
+                return String.Empty;
+            }
+        }
 
         public void SignIn()
         {

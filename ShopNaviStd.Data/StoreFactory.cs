@@ -1016,7 +1016,7 @@ namespace ShopNavi.Data
                 new Store()
                 {
                     //Image = new Xamarin.Forms.Image(),
-                    ImageName="kaufland.png",
+                    ImageName= StoreFactory.HalProxy.ResourcePrefix + "kaufland.png",
                     Name = "Kaufland",
                     Location = "Trnavska",
                     Index = ix++
@@ -1026,7 +1026,7 @@ namespace ShopNavi.Data
                 new Store()
                 {
                     //Image = new Xamarin.Forms.Image(),
-                    ImageName = "lidl.png",
+                    ImageName = StoreFactory.HalProxy.ResourcePrefix + "lidl.png",
                     Name = "Lidl",
                     Location = "Mlada garda",
                     Index = ix++

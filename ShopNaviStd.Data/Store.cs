@@ -87,7 +87,7 @@ namespace ShopNavi.Data
 
                     if (string.IsNullOrEmpty(this.imageName))
                     {
-                        this.imageName = this.Name.ToLowerInvariant() + ".png";
+                        this.imageName = StoreFactory.HalProxy.ResourcePrefix + this.Name.ToLowerInvariant() + ".png";
                     }
                 }
                 catch

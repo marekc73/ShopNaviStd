@@ -126,5 +126,10 @@ namespace ShopNavi.Data
         ICommand GetGoToInputCmd(ICreateListVM vm);
 
         ILoginOAuth GetLogin(ICreateListVM vm);
+
+        string ResourcePrefix
+        {
+            get;
+        }
     }
 }

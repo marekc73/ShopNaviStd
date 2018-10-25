@@ -66,23 +66,23 @@ namespace ShopNavi.Data
                 SwipeType swipeType = SwipeType.None;
                 if ((swipe.Type & SwipeType.Up) != 0 || (swipe.Type & SwipeType.Left) != 0)
                 {
-                    line.OrderImageName = "up.png";
+                    line.OrderImageName = StoreFactory.HalProxy.ResourcePrefix + "up.png";
                     swipeType = SwipeType.Up;
                 }
                 else if ((swipe.Type & SwipeType.Down) != 0 || (swipe.Type & SwipeType.Right) != 0)
                 {
-                    line.OrderImageName = "down.png";
+                    line.OrderImageName = StoreFactory.HalProxy.ResourcePrefix + "down.png";
                     swipeType = SwipeType.Down;
                 }
                 else
                 {
-                    line.OrderImageName = "empty.png";
+                    line.OrderImageName = StoreFactory.HalProxy.ResourcePrefix + "empty.png";
                 }
 
                 if (swipe.Finished)
                 {
                     vm.Order.MoveOutputLine(line, -1, swipeType);
-                    line.OrderImageName = "empty.png";
+                    line.OrderImageName = StoreFactory.HalProxy.ResourcePrefix + "empty.png";
                 }
 
                 vm.RaiseChanges();
