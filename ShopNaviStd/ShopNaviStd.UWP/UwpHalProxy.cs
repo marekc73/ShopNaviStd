@@ -21,6 +21,7 @@ using Xamarin.Forms;
 using Windows.Storage.Pickers;
 using System.Globalization;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace ShopNavi.UWP
 {
@@ -34,6 +35,7 @@ namespace ShopNavi.UWP
         //GoogleApiClient mGoogleApiClient;
         Windows.Storage.StorageFolder appData = Windows.Storage.ApplicationData.Current.LocalFolder;
         Windows.Storage.StorageFolder personalData = Windows.Storage.ApplicationData.Current.LocalFolder;
+        List<String> clipBoardText = new List<String>();
 
         private static int RC_SIGN_IN = 9001;
         public UwpHalProxy(object context, Windows.UI.Xaml.Controls.Frame act)
@@ -50,6 +52,17 @@ namespace ShopNavi.UWP
             {
                 doLog = false;
             }
+
+            Clipboard.ContentChanged += async (s, e) =>
+            {
+                DataPackageView dataPackageView = Clipboard.GetContent();
+                if (dataPackageView.Contains(StandardDataFormats.Text))
+                {
+                    string text = await dataPackageView.GetTextAsync();
+                    // To output the text from this example, you need a TextBlock control
+                    this.clipBoardText = text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                }
+            };
         }
 
         private object appContext = null;
@@ -99,9 +112,7 @@ namespace ShopNavi.UWP
 
         public List<string> GetClipboardList()
         {
-            return new List<string>();
-            //ClipboardManager clipboard = (ClipboardManager)appContext.GetSystemService(Context.ClipboardService);
-            //return clipboard.HasText ? clipboard.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList() : new List<string>();
+            return clipBoardText;
         }
 
         public AllItems GetAllItems()
