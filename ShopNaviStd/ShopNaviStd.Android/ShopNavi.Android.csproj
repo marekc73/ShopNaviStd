@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidHalProxy.cs" />
+    <Compile Include="CustomUrlSchemeInterceptorActivity.cs" />
     <Compile Include="GestureListener.cs" />
     <Compile Include="GmailAuthReceiver.cs" />
     <Compile Include="GmailReader.cs" />

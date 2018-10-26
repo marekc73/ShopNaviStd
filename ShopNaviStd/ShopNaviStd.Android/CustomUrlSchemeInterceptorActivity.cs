@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using ShopNavi.Data;
+using Xamarin.Auth;
 
 namespace ShopNavi.Droid
 {
@@ -33,7 +34,7 @@ namespace ShopNavi.Droid
                 var uri = new Uri(Intent.Data.ToString());
 
                 // Load redirectUrl page
-                AuthenticationState.Authenticator.OnPageLoading(uri);
+                ((OAuth2Authenticator)AuthenticationState.Authenticator).OnPageLoading(uri);
 
                 Finish();
             }
